@@ -1,8 +1,42 @@
 /* eslint-disable react/no-unescaped-entities */
-
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+
+    const {createUser} = useContext(AuthContext)
+
+    const handleRegister = e =>{
+        e.preventDefault();
+        const form = new FormData(e.currentTarget)
+        const name = form.get('name');
+        const email = form.get('email');
+        const photoUrl = form.get('photoUrl');
+        const password = form.get('password');
+
+        createUser(email,password)
+        .then(res=>{
+
+            // update the profile with current name and photoUrl
+            updateProfile(res.user,{
+                displayName: name, photoURL: photoUrl
+            })
+            .then()
+            .catch(error=>{
+                console.log(error)
+            })
+
+            console.log(res.user);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+
+        console.log(name,email,photoUrl,password);
+    }
+
     return (
         <div>
             <div className="text-center my-7">
@@ -11,36 +45,36 @@ const Register = () => {
             <div className="">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body">
+                        <form onSubmit={handleRegister} className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Full Name</span>
+                                    <span className="label-text">Name</span>
                                 </label>
-                                <input type="email" placeholder="Enter full name" className="input input-bordered" required />
+                                <input name="name" type="text" placeholder="Enter name" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" required />
+                                <input name="email" type="email" placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">PhotoUrl</span>
                                 </label>
-                                <input type="email" placeholder="Enter PhotoUrl" className="input input-bordered" required />
+                                <input name="photoUrl" type="text" placeholder="Enter PhotoUrl" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered" required />
+                                <input name="password" type="password" placeholder="password" className="input input-bordered" required />
                                 <label className="label">
                                     <p className="pt-2 text-sm">Already have an account? <span className="text-blue-400"><Link to='/login'>Login</Link></span></p>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Create an account</button>
+                                <button type="submit" className="btn btn-primary">Create an account</button>
                             </div>
                         </form>
                     </div>
