@@ -3,6 +3,9 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Register = () => {
 
@@ -18,7 +21,6 @@ const Register = () => {
 
         createUser(email,password)
         .then(res=>{
-
             // update the profile with current name and photoUrl
             updateProfile(res.user,{
                 displayName: name, photoURL: photoUrl
@@ -27,7 +29,7 @@ const Register = () => {
             .catch(error=>{
                 console.log(error)
             })
-
+            toast("Registration Successful")
             console.log(res.user);
         })
         .catch(error=>{
@@ -36,6 +38,8 @@ const Register = () => {
 
         console.log(name,email,photoUrl,password);
     }
+
+
 
     return (
         <div>
@@ -56,7 +60,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input name="email" type="email" placeholder="email" className="input input-bordered" required />
+                                <input name="email" type="email" placeholder="Enter email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -68,7 +72,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input name="password" type="password" placeholder="password" className="input input-bordered" required />
+                                <input name="password" type="password" placeholder="Enter password" className="input input-bordered" required />
                                 <label className="label">
                                     <p className="pt-2 text-sm">Already have an account? <span className="text-blue-400"><Link to='/login'>Login</Link></span></p>
                                 </label>
@@ -79,6 +83,7 @@ const Register = () => {
                         </form>
                     </div>
                 </div>
+            <ToastContainer />
             </div>
         </div>
     );
