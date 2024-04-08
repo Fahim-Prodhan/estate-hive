@@ -1,25 +1,40 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
 import auth from "../../firebase/firebase.config";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
 
     const { signInUser } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleGoogleSignIn = () => {
         signInWithPopup(auth, googleProvider)
             .then(res => {
                 console.log(res.user);
+                toast("Login Successful")
             })
             .catch(error => {
                 console.log(error);
             })
-
     }
+
+    const handleGithubSignIn = ()=>{
+        signInWithPopup(auth,githubProvider)
+        .then(res=>{
+            console.log(res.user);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+    }
+
 
     const handleSingInUser = (e)=>{
         e.preventDefault();
@@ -61,7 +76,7 @@ const Login = () => {
                                 <div className="divider">OR</div>
                                 <div className="flex justify-center gap-4">
                                     <button onClick={handleGoogleSignIn} className="btn">Google</button>
-                                    <button className="btn">GitHub</button>
+                                    <button onClick={handleGithubSignIn} className="btn">GitHub</button>
                                 </div>
                             </div>
                             <div className="form-control mt-6">
@@ -71,6 +86,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     );
 };

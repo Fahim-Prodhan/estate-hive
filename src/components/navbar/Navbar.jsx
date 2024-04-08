@@ -1,6 +1,21 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { signOut } from "firebase/auth";
+import auth from "../../firebase/firebase.config";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+
+    const { user } = useContext(AuthContext)
+
+    const handleLogout = ()=>{
+        signOut(auth).then(() => {
+            toast("Logout Successful")
+          }).catch((error) => {
+            console.log(error);
+          });
+    }
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -27,15 +42,16 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-4">
-                    <div className="flex gap-4">
-                        <div className="avatar placeholder">
-                            <div className="bg-neutral text-neutral-content rounded-full w-12">
-                                <span>SY</span>
+                    {
+                        user ? <div className="flex gap-4">
+                            <div className="avatar placeholder">
+                                <div className="bg-neutral text-neutral-content rounded-full w-12">
+                                    <span><img src={user?.photoURL} alt="" /></span>
+                                </div>
                             </div>
-                        </div>
-                    <a className="btn">Logout</a>
-                    </div>
-                    <NavLink className="btn" to='/login'>Login</NavLink> 
+                            <a className="btn p-1 md:p-4" onClick={handleLogout}>Logout</a>
+                        </div> : <NavLink className="btn" to='/login'>Login</NavLink>
+                    }
                 </div>
             </div>
         </div>
