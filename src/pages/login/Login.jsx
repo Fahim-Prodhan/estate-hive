@@ -1,7 +1,40 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
+import auth from "../../firebase/firebase.config";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+
+    const { signInUser } = useContext(AuthContext)
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, googleProvider)
+            .then(res => {
+                console.log(res.user);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    }
+
+    const handleSingInUser = (e)=>{
+        e.preventDefault();
+        const form = new FormData(e.currentTarget)
+        const email = form.get('email');
+        const password = form.get('password');
+
+        signInUser(email,password)
+        .then(res=>{
+            console.log(res.user);
+        })
+        .catch(error=>{console.log(error);})
+    }
+
+
     return (
         <div>
             <div className="text-center my-7">
@@ -15,19 +48,24 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" required />
+                                <input name="email" type="email" placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered" required />
+                                <input name="password" type="password" placeholder="password" className="input input-bordered" required />
                                 <label className="label">
                                     <p className="pt-2 text-sm">Don't Have any account? <span className="text-blue-400"><Link to='/register'>Register</Link></span></p>
                                 </label>
+                                <div className="divider">OR</div>
+                                <div className="flex justify-center gap-4">
+                                    <button onClick={handleGoogleSignIn} className="btn">Google</button>
+                                    <button className="btn">GitHub</button>
+                                </div>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                                <button onClick={handleSingInUser} type="submit" className="btn btn-primary">Login</button>
                             </div>
                         </form>
                     </div>

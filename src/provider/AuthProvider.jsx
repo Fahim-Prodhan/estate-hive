@@ -1,6 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -55,9 +55,27 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
+    const signInUser = (email,password)=>{
+        return signInWithEmailAndPassword(auth,email,password);
+    }
+
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth, currentUser=>{
+            setUser(currentUser)
+            console.log(currentUser);
+        })
+
+        return ()=>{
+            unsubscribe()
+        }
+
+    },[])
+
 
     const authInfo = {
-        user, createUser
+        user,
+        createUser,
+        signInUser
     }
 
     return (
