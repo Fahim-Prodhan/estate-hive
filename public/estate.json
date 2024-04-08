@@ -9,8 +9,7 @@
       "area": "2,500 sq ft",
       "location": "123 Main St, Anytown",
       "facilities": ["living room", "kitchen", "backyard"],
-      "image": "path/to/image1.jpg",
-      "button": "View Property"
+      "image": "https://i.ibb.co/Fgg1TVf/1.jpg"
     },
     {
       "id": 2,
@@ -22,8 +21,7 @@
       "area": "1,800 sq ft",
       "location": "456 Elm St, Cityville",
       "facilities": ["living room", "kitchen", "rooftop terrace"],
-      "image": "path/to/image2.jpg",
-      "button": "View Property"
+      "image": "https://i.ibb.co/Ns648bL/3.jpg"
     },
     {
       "id": 3,
@@ -35,8 +33,7 @@
       "area": "1,200 sq ft",
       "location": "789 Oak St, Metro City",
       "facilities": ["living room", "kitchen", "balcony", "gym", "swimming pool"],
-      "image": "path/to/image3.jpg",
-      "button": "View Property"
+      "image": "https://i.ibb.co/B64qWJ8/2.jpg"
     },
     {
       "id": 4,
@@ -45,24 +42,22 @@
       "description": "Modern student housing with individual bedrooms and study areas.",
       "price": "$800/month per room",
       "status": "rent",
-      "area": "200 sq ft per room",
+      "area": "200 sq ft",
       "location": "10 College Ave, Campus Town",
       "facilities": ["bedroom", "study area", "common room", "laundry facilities"],
-      "image": "path/to/image4.jpg",
-      "button": "View Property"
+      "image": "https://i.ibb.co/Gk9pjK5/10.jpg"
     },
     {
       "id": 5,
       "estate_title": "Senior Living Community",
-      "segment_name": "Senior living communities",
+      "segment_name": "Senior living",
       "description": "Retirement community offering comfortable living and various amenities.",
       "price": "$3,000/month",
       "status": "rent",
       "area": "800 sq ft",
       "location": "55 Retirement Blvd, Senior City",
       "facilities": ["living room", "kitchen", "fitness center", "community activities"],
-      "image": "path/to/image5.jpg",
-      "button": "View Property"
+      "image": "https://i.ibb.co/pb2m9cs/4.jpg"
     },
     {
       "id": 6,
@@ -74,8 +69,7 @@
       "area": "1,000 sq ft",
       "location": "123 Ocean Ave, Beach Town",
       "facilities": ["living room", "kitchen", "ocean view", "private beach access"],
-      "image": "path/to/image6.jpg",
-      "button": "View Property"
+      "image": "https://i.ibb.co/GMhwXbb/6.jpg"
     },
     {
       "id": 7,
@@ -87,8 +81,7 @@
       "area": "800 sq ft",
       "location": "789 Lakeview Dr, Lakeside Village",
       "facilities": ["living room", "kitchen", "lake view", "fire pit"],
-      "image": "path/to/image7.jpg",
-      "button": "View Property"
+      "image": "https://i.ibb.co/JnvhKHC/7.jpg"
     },
     {
       "id": 8,
@@ -100,21 +93,19 @@
       "area": "1,200 sq ft",
       "location": "456 Mountain Rd, Alpine Retreat",
       "facilities": ["living room", "kitchen", "mountain view", "ski-in/ski-out access"],
-      "image": "path/to/image8.jpg",
-      "button": "View Property"
+      "image": "https://i.ibb.co/7YVTftP/8.jpg"
     },
     {
       "id": 9,
       "estate_title": "Lakeview Retirement Home",
-      "segment_name": "Senior living communities",
+      "segment_name": "Senior communities",
       "description": "Retirement home with picturesque lake views and peaceful surroundings.",
       "price": "$400,000",
       "status": "sale",
       "area": "1,500 sq ft",
       "location": "101 Lakeview Dr, Serenity Hills",
       "facilities": ["living room", "kitchen", "lake view", "community activities"],
-      "image": "path/to/image9.jpg",
-      "button": "View Property"
+      "image": "https://i.ibb.co/6FPmvYp/9.jpg"
     }
   ]
   
