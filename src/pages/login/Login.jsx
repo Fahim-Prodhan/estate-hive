@@ -29,6 +29,8 @@ const Login = () => {
         signInWithPopup(auth,githubProvider)
         .then(res=>{
             console.log(res.user);
+            toast("Login Successful")
+
         })
         .catch(error=>{
             console.log(error);
