@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
 
     const {createUser} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleRegister = e =>{
         e.preventDefault();
@@ -30,13 +31,14 @@ const Register = () => {
                 console.log(error)
             })
             toast("Registration Successful")
-            console.log(res.user);
+            navigate('/')
+            // console.log(res.user);
         })
         .catch(error=>{
             console.log(error);
         })
 
-        console.log(name,email,photoUrl,password);
+        // console.log(name,email,photoUrl,password);
     }
 
 

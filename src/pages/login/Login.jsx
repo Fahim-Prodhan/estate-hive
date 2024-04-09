@@ -53,9 +53,23 @@ const Login = () => {
 
         signInUser(email,password)
         .then(res=>{
-            console.log(res.user);
+            // console.log(res.user);
+            toast("Login Successful")
+            navigate(location.state?`${location.state}`:'/')
         })
-        .catch(error=>{console.log(error);})
+        .catch(error=>{
+            toast.error('Invalid Details', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+            console.log(error);
+        })
     }
 
 
@@ -67,7 +81,7 @@ const Login = () => {
             <div className="">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body">
+                        <form onSubmit={handleSingInUser} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -89,7 +103,7 @@ const Login = () => {
                                 </div>
                             </div>
                             <div className="form-control mt-6">
-                                <button onClick={handleSingInUser} type="submit" className="btn btn-primary">Login</button>
+                                <button  type="submit" className="btn btn-primary">Login</button>
                             </div>
                         </form>
                     </div>
