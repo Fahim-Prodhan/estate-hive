@@ -1,111 +1,110 @@
 [
-    {
+  {
       "id": 1,
       "estate_title": "Cozy Single-Family Home",
       "segment_name": "Single-family homes",
-      "description": "Charming single-family home with spacious rooms and backyard garden.",
+      "description": "This charming single-family home boasts an inviting ambiance and ample space for comfortable living. Nestled on a serene street, this residence offers a perfect blend of modern convenience and classic charm. Step inside to discover a spacious living room flooded with natural light, creating a welcoming atmosphere for relaxation and gatherings. The adjacent kitchen is a chef's delight, featuring sleek countertops, stainless steel appliances, and plenty of storage space. Enjoy the convenience of indoor-outdoor living with easy access to the backyard garden, where you can unwind amidst lush greenery and entertain guests on warm summer evenings. Retreat to the cozy bedrooms for restful nights and wake up refreshed to greet the day. Located at 123 Main St, Anytown, this home is a true sanctuary for those seeking comfort and tranquility.",
       "price": "$350,000",
       "status": "sale",
       "area": "2,500 sq ft",
       "location": "123 Main St, Anytown",
       "facilities": ["living room", "kitchen", "backyard"],
       "image": "https://i.ibb.co/Fgg1TVf/1.jpg"
-    },
-    {
+  },
+  {
       "id": 2,
       "estate_title": "Modern Townhouse",
       "segment_name": "Townhouses",
-      "description": "Sleek and stylish townhouse with contemporary design and rooftop terrace.",
+      "description": "Welcome to modern urban living at its finest in this sleek and stylish townhouse. Boasting contemporary design elements and upscale finishes, this residence offers a sophisticated lifestyle in the heart of the city. Step through the foyer and into the expansive living area, where floor-to-ceiling windows flood the space with natural light and provide sweeping views of the surrounding skyline. The gourmet kitchen is a chef's dream, equipped with top-of-the-line appliances, custom cabinetry, and a spacious island perfect for casual dining or entertaining guests. Retreat to the luxurious master suite, complete with a spa-like ensuite bath and a private balcony overlooking the city below. With its prime location at 456 Elm St, Cityville, this townhouse offers unparalleled convenience and style for discerning urban dwellers.",
       "price": "$2,500/month",
       "status": "rent",
       "area": "1,800 sq ft",
       "location": "456 Elm St, Cityville",
       "facilities": ["living room", "kitchen", "rooftop terrace"],
       "image": "https://i.ibb.co/Ns648bL/3.jpg"
-    },
-    {
+  },
+  {
       "id": 3,
       "estate_title": "Luxury Apartment",
       "segment_name": "Apartments",
-      "description": "Spacious apartment in a high-rise building with panoramic city views.",
+      "description": "Experience the pinnacle of urban luxury living in this spacious apartment nestled within a prestigious high-rise building. Boasting breathtaking panoramic views of the city skyline, this residence offers an unparalleled blend of style, comfort, and convenience. Step inside and be greeted by a light-filled living space adorned with elegant finishes and designer touches throughout. The expansive floor-to-ceiling windows not only showcase the stunning views but also create a seamless connection to the outdoors. The chef-inspired kitchen is equipped with state-of-the-art appliances, sleek cabinetry, and ample counter space, making it perfect for both everyday living and entertaining. Retreat to the tranquil master suite, where a spa-like ensuite bath and a private balcony await, offering a serene oasis amidst the hustle and bustle of city life. With access to premium amenities including a fully equipped gym and a sparkling swimming pool, this apartment at 789 Oak St, Metro City, epitomizes luxury living at its finest.",
       "price": "$600,000",
       "status": "sale",
       "area": "1,200 sq ft",
       "location": "789 Oak St, Metro City",
       "facilities": ["living room", "kitchen", "balcony", "gym", "swimming pool"],
       "image": "https://i.ibb.co/B64qWJ8/2.jpg"
-    },
-    {
+  },
+  {
       "id": 4,
       "estate_title": "Student Housing Complex",
       "segment_name": "Student housing",
-      "description": "Modern student housing with individual bedrooms and study areas.",
+      "description": "Welcome to modern student living at its finest in this state-of-the-art housing complex. Designed with the needs of today's students in mind, this residence offers a comfortable and supportive environment for academic success and personal growth. Each individual bedroom is furnished with a cozy bed, ample storage space, and a dedicated study area, providing a private retreat for focused studying and relaxation. The shared common areas, including a spacious living room and a fully equipped kitchen, foster a sense of community and encourage social interaction among residents. With convenient access to on-site laundry facilities and located at 10 College Ave, Campus Town, this housing complex offers everything students need to thrive during their college years.",
       "price": "$800/month per room",
       "status": "rent",
       "area": "200 sq ft",
       "location": "10 College Ave, Campus Town",
       "facilities": ["bedroom", "study area", "common room", "laundry facilities"],
       "image": "https://i.ibb.co/Gk9pjK5/10.jpg"
-    },
-    {
+  },
+  {
       "id": 5,
       "estate_title": "Senior Living Community",
       "segment_name": "Senior living",
-      "description": "Retirement community offering comfortable living and various amenities.",
+      "description": "Welcome to a vibrant and welcoming senior living community designed to enhance your retirement years and foster a fulfilling lifestyle. Situated in the heart of Senior City, this community offers resort-style amenities, personalized care services, and a close-knit community of like-minded individuals. The spacious living room serves as the central gathering space for socializing with neighbors, participating in engaging activities, or simply relaxing with a good book. The fully equipped kitchen allows residents to prepare delicious meals with ease, while the adjacent dining area provides a comfortable setting for enjoying chef-prepared cuisine and sharing meals with friends. With access to a state-of-the-art fitness center, engaging community activities, and a variety of on-site amenities, this senior living community at 55 Retirement Blvd promises an enriching and fulfilling retirement experience.",
       "price": "$3,000/month",
       "status": "rent",
       "area": "800 sq ft",
       "location": "55 Retirement Blvd, Senior City",
       "facilities": ["living room", "kitchen", "fitness center", "community activities"],
       "image": "https://i.ibb.co/pb2m9cs/4.jpg"
-    },
-    {
+  },
+  {
       "id": 6,
       "estate_title": "Beachfront Vacation Rental",
       "segment_name": "Vacation rentals",
-      "description": "Beautiful beachfront property perfect for a relaxing getaway.",
+      "description": "Escape to paradise with this idyllic beachfront vacation rental, offering the ultimate retreat for relaxation and rejuvenation. Nestled along the pristine shores of Beach Town, this property boasts breathtaking ocean views, luxurious accommodations, and an array of upscale amenities. Step inside to discover a spacious living room adorned with coastal-inspired decor, inviting you to unwind in comfort after a day of sun and surf. The fully equipped kitchen is perfect for preparing delicious meals using fresh local ingredients, while the adjacent dining area offers a picturesque setting for enjoying meals with loved ones. With private beach access just steps away, you can spend your days lounging in the sun, swimming in the crystal-clear waters, or exploring the coastline at your leisure. Whether you're seeking a romantic getaway, a family vacation, or a solo retreat, this beachfront rental at 123 Ocean Ave promises an unforgettable experience filled with relaxation, adventure, and lasting memories.",
       "price": "$300/night",
       "status": "rent",
       "area": "1,000 sq ft",
       "location": "123 Ocean Ave, Beach Town",
       "facilities": ["living room", "kitchen", "ocean view", "private beach access"],
       "image": "https://i.ibb.co/GMhwXbb/6.jpg"
-    },
-    {
+  },
+  {
       "id": 7,
       "estate_title": "Lakefront Cabin Retreat",
       "segment_name": "Vacation rentals",
-      "description": "Quaint cabin nestled by the lake, perfect for a peaceful escape.",
+      "description": "Experience the tranquility of lakeside living in this charming cabin retreat nestled along the shores of Lakeside Village. Surrounded by towering trees and serene waters, this cozy cabin offers a peaceful escape from the hustle and bustle of everyday life. Step inside to discover a rustic yet inviting living room adorned with knotty pine walls, a stone fireplace, and comfortable furnishings, creating a warm and welcoming atmosphere for relaxation and reflection. The fully equipped kitchen is perfect for preparing home-cooked meals, while the adjacent dining area offers a cozy spot for enjoying meals with loved ones. Step outside onto the spacious deck to take in the breathtaking lake views, or gather around the fire pit for an evening of s'mores and storytelling under the stars. Whether you're seeking a romantic retreat, a family vacation, or a solo adventure, this lakefront cabin at 789 Lakeview Dr promises an unforgettable experience filled with peace, serenity, and natural beauty.",
       "price": "$200/night",
       "status": "rent",
       "area": "800 sq ft",
       "location": "789 Lakeview Dr, Lakeside Village",
       "facilities": ["living room", "kitchen", "lake view", "fire pit"],
       "image": "https://i.ibb.co/JnvhKHC/7.jpg"
-    },
-    {
+  },
+  {
       "id": 8,
       "estate_title": "Mountain Chalet Getaway",
       "segment_name": "Vacation rentals",
-      "description": "Cozy chalet nestled in the mountains, offering serene views and outdoor activities.",
+      "description": "Escape to the serene beauty of the mountains with this charming chalet getaway nestled in the heart of Alpine Retreat. Surrounded by towering evergreens and majestic peaks, this cozy chalet offers a peaceful retreat for nature lovers and outdoor enthusiasts alike. Step inside to discover a welcoming living room adorned with exposed wood beams, a stone fireplace, and comfortable furnishings, creating a warm and inviting atmosphere for relaxation and rejuvenation. The fully equipped kitchen is perfect for preparing hearty meals, while the adjacent dining area offers a cozy spot for enjoying meals with loved ones. Step outside onto the spacious deck to take in the breathtaking mountain views, or explore the nearby trails for hiking, biking, and skiing adventures. Whether you're seeking a romantic getaway, a family vacation, or a solo retreat, this mountain chalet at 456 Mountain Rd promises an unforgettable experience filled with natural beauty, adventure, and tranquility.",
       "price": "$250/night",
       "status": "rent",
       "area": "1,200 sq ft",
       "location": "456 Mountain Rd, Alpine Retreat",
       "facilities": ["living room", "kitchen", "mountain view", "ski-in/ski-out access"],
       "image": "https://i.ibb.co/7YVTftP/8.jpg"
-    },
-    {
+  },
+  {
       "id": 9,
       "estate_title": "Lakeview Retirement Home",
       "segment_name": "Senior communities",
-      "description": "Retirement home with picturesque lake views and peaceful surroundings.",
+      "description": "Welcome to a picturesque retirement community nestled along the tranquil shores of Serenity Hills. Surrounded by lush greenery and serene lake views, this retirement home offers a peaceful and relaxing environment for seniors seeking a fulfilling lifestyle in retirement. Step inside to discover a spacious living room adorned with large windows, allowing natural light to fill the space and providing breathtaking views of the lake and surrounding landscape. The fully equipped kitchen is perfect for preparing delicious meals, while the adjacent dining area offers a comfortable spot for enjoying meals with friends and family. Engage in a variety of community activities and social events, or simply relax and unwind in the comfort of your own home. With its prime location at 101 Lakeview Dr, this retirement home promises a tranquil and enriching retirement experience filled with warmth, camaraderie, and natural beauty.",
       "price": "$400,000",
       "status": "sale",
       "area": "1,500 sq ft",
       "location": "101 Lakeview Dr, Serenity Hills",
       "facilities": ["living room", "kitchen", "lake view", "community activities"],
       "image": "https://i.ibb.co/6FPmvYp/9.jpg"
-    }
-  ]
-  
+  }
+]
