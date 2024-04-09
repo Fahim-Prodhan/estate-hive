@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase/firebase.config";
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useContext } from "react";
@@ -10,14 +10,19 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
-    const { signInUser } = useContext(AuthContext)
+    const { signInUser, setLoading } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
+    const location = useLocation();
+    const navigate = useNavigate()
+
 
     const handleGoogleSignIn = () => {
+        setLoading(true)
         signInWithPopup(auth, googleProvider)
             .then(res => {
-                console.log(res.user);
+                // console.log(res.user);
+                navigate(location.state?`${location.state}`:'/')
                 toast("Login Successful")
             })
             .catch(error => {
@@ -26,9 +31,11 @@ const Login = () => {
     }
 
     const handleGithubSignIn = ()=>{
+        setLoading(true)
         signInWithPopup(auth,githubProvider)
         .then(res=>{
-            console.log(res.user);
+            // console.log(res.user);
+            navigate('/')
             toast("Login Successful")
 
         })

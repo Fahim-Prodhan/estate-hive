@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
@@ -7,14 +7,15 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, setLoading } = useContext(AuthContext)
 
-    const handleLogout = ()=>{
+    const handleLogout = () => {
+        setLoading(true)
         signOut(auth).then(() => {
             toast("Logout Successful")
-          }).catch((error) => {
+        }).catch((error) => {
             console.log(error);
-          });
+        });
     }
 
     const links = <>
@@ -34,7 +35,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="text-xl">EstateHive</a>
+                    <Link to={'/'} className="text-2xl cursor-pointer font-bold">EstateHive</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -44,9 +45,11 @@ const Navbar = () => {
                 <div className="navbar-end gap-4">
                     {
                         user ? <div className="flex gap-4">
-                            <div className="avatar placeholder">
+                            <div data-tip={user.displayName} className="avatar placeholder tooltip">
                                 <div className="bg-neutral text-neutral-content rounded-full w-12">
-                                    <span><img src={user?.photoURL} alt="" /></span>
+                                    <div>
+                                        <button><img src={user?.photoURL} alt="" /></button>
+                                    </div>
                                 </div>
                             </div>
                             <a className="btn p-1 md:p-4" onClick={handleLogout}>Logout</a>
