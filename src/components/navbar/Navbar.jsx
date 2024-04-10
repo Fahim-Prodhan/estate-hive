@@ -33,6 +33,9 @@ const Navbar = () => {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             {links}
+                            {
+                                user && <li><NavLink to='/user-profile'>User Profile</NavLink></li>
+                            }
                         </ul>
                     </div>
                     <Link to={'/'} className="text-2xl cursor-pointer font-bold">EstateHive</Link>
@@ -40,6 +43,9 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {links}
+                        {
+                            user && <li><NavLink to='/user-profile'>User Profile</NavLink></li>
+                        }
                     </ul>
                 </div>
                 <div className="navbar-end gap-4">

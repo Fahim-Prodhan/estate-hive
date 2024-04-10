@@ -5,14 +5,15 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet";
 
 
 const Register = () => {
 
-    const {createUser} = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    const handleRegister = e =>{
+    const handleRegister = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget)
         const name = form.get('name');
@@ -20,23 +21,25 @@ const Register = () => {
         const photoUrl = form.get('photoUrl');
         const password = form.get('password');
 
-        createUser(email,password)
-        .then(res=>{
-            // update the profile with current name and photoUrl
-            updateProfile(res.user,{
-                displayName: name, photoURL: photoUrl
+        createUser(email, password)
+            .then(res => {
+                // update the profile with current name and photoUrl
+                updateProfile(res.user, {
+                    displayName: name, photoURL: photoUrl
+                })
+                    .then()
+                    .catch(error => {
+                        console.log(error)
+                    })
+                toast("Registration Successful")
+                setTimeout(() => {
+                    navigate('/')
+                }, 2000);
+                // console.log(res.user);
             })
-            .then()
-            .catch(error=>{
-                console.log(error)
+            .catch(error => {
+                console.log(error);
             })
-            toast("Registration Successful")
-            navigate('/')
-            // console.log(res.user);
-        })
-        .catch(error=>{
-            console.log(error);
-        })
 
         // console.log(name,email,photoUrl,password);
     }
@@ -45,6 +48,9 @@ const Register = () => {
 
     return (
         <div>
+             <Helmet>
+                <title>EstateHive | Register</title>
+            </Helmet>
             <div className="text-center my-7">
                 <h1 className="text-[40px]">Register</h1>
             </div>
@@ -85,7 +91,7 @@ const Register = () => {
                         </form>
                     </div>
                 </div>
-            <ToastContainer />
+                <ToastContainer />
             </div>
         </div>
     );

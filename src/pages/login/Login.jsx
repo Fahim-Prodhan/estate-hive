@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet";
 
 
 const Login = () => {
@@ -22,7 +23,7 @@ const Login = () => {
         signInWithPopup(auth, googleProvider)
             .then(res => {
                 // console.log(res.user);
-                navigate(location.state?`${location.state}`:'/')
+                navigate(location.state ? `${location.state}` : '/')
                 toast("Login Successful")
             })
             .catch(error => {
@@ -30,51 +31,56 @@ const Login = () => {
             })
     }
 
-    const handleGithubSignIn = ()=>{
+    const handleGithubSignIn = () => {
         setLoading(true)
-        signInWithPopup(auth,githubProvider)
-        .then(res=>{
-            // console.log(res.user);
-            navigate('/')
-            toast("Login Successful")
+        signInWithPopup(auth, githubProvider)
+            .then(res => {
+                // console.log(res.user);
+                navigate('/')
+                toast("Login Successful")
 
-        })
-        .catch(error=>{
-            console.log(error);
-        })
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
 
-    const handleSingInUser = (e)=>{
+    const handleSingInUser = (e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget)
         const email = form.get('email');
         const password = form.get('password');
 
-        signInUser(email,password)
-        .then(res=>{
-            // console.log(res.user);
-            toast("Login Successful")
-            navigate(location.state?`${location.state}`:'/')
-        })
-        .catch(error=>{
-            toast.error('Invalid Details', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
+        signInUser(email, password)
+            .then(res => {
+                // console.log(res.user);
+                toast("Login Successful")
+                setTimeout(() => {
+                    navigate(location.state ? `${location.state}` : '/')
+                }, 2000);
+            })
+            .catch(error => {
+                toast.error('Invalid Details', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
                 });
-            console.log(error);
-        })
+                console.log(error);
+            })
     }
 
 
     return (
         <div>
+             <Helmet>
+                <title>EstateHive | Login</title>
+            </Helmet>
             <div className="text-center my-7">
                 <h1 className="text-[40px]">Please Login</h1>
             </div>
@@ -103,13 +109,13 @@ const Login = () => {
                                 </div>
                             </div>
                             <div className="form-control mt-6">
-                                <button  type="submit" className="btn btn-primary">Login</button>
+                                <button type="submit" className="btn btn-primary">Login</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     );
 };

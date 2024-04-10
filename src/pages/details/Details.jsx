@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 
 
@@ -11,8 +14,12 @@ const Details = () => {
     const estate = estates.find(estate => estate.id === intId)
     console.log(estate);
 
+
     return (
         <div className="grid grid-cols-1 gap-6 my-12 ">
+             <Helmet>
+                <title>EstateHive | Estate Details</title>
+            </Helmet>
             <div className="bg-[#39393917] grid items-center justify-center p-9 ">
                 <img className="w-[560px] rounded-lg" src={estate.image} alt="" />
             </div>
@@ -22,7 +29,7 @@ const Details = () => {
                 <div className="my-6"><hr /></div>
                 <div className="flex gap-2">
                 <p className="font-bold text-xl">Facilities:</p>
-                <div className="flex gap-4 items-center text-[#E8751A]"> {estate.facilities.map((facility,index)=> <p key={index}>{facility}</p>)}</div>
+                <div className="grid grid-cols-2 md:flex gap-4 items-center text-[#E8751A]"> {estate.facilities.map((facility,index)=> <p key={index}>{facility}</p>)}</div>
                 </div>
                 <div className="my-6"><hr /></div>
                 <p><span className="font-bold">Description:</span> {estate.description}</p>

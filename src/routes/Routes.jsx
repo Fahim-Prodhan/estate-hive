@@ -6,11 +6,14 @@ import Register from "../pages/register/Register";
 import Details from "../pages/details/Details";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../pages/updateProfile/UpdateProfile";
+import UserProfile from "../pages/userProfile/UserProfile";
+import ErrorElement from "../pages/errorElement/ErrorElement";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement:<ErrorElement></ErrorElement>,
       children:[
         {
             path:'/',
@@ -23,6 +26,10 @@ const router = createBrowserRouter([
         {
             path:'/register',
             element:<Register></Register>
+        },
+        {
+          path:"/user-profile",
+          element:<UserProfile></UserProfile>
         },
         {
           path:'/details/:id',
