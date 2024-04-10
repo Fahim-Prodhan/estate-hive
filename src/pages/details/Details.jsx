@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 
 
+
 const Details = () => {
 
     const estates = useLoaderData()
@@ -32,7 +33,6 @@ const Details = () => {
                     <div className='grid grid-cols-4 md:grid-cols-8'><p className="font-bold">Area:</p><p className=" col-span-3 md:col-span-4">{estate.area}</p></div>
                     <div className='grid grid-cols-4 md:grid-cols-8'><p className="font-bold">Location:</p><p className=" col-span-3 md:col-span-4">{estate.location}</p></div>
                 </div>
-
             </div>
         </div>
     );

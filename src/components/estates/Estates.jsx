@@ -20,7 +20,7 @@ function Estates() {
 
 
     return (
-        <div className='mt-[100px]'>
+        <div className='my-[100px]'>
             <h1 className='font-bold text-[42px] text-center'>Estates</h1>
             <p className='text-center'>Best deals with the best properties. Make your dream true</p>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8'>

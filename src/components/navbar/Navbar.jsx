@@ -52,8 +52,8 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             </div>
-                            <a className="btn p-1 md:p-4" onClick={handleLogout}>Logout</a>
-                        </div> : <NavLink className="btn" to='/login'>Login</NavLink>
+                            <a className="btn bg-[#00b5a5] text-white p-1 md:p-4" onClick={handleLogout}>Logout</a>
+                        </div> : <NavLink className="btn text-white bg-[#41C9E2]" to='/login'>Login</NavLink>
                     }
                 </div>
             </div>
