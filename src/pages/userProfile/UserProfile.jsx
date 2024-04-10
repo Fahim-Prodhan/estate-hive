@@ -28,13 +28,13 @@ const UserProfile = () => {
             </Helmet>
             <div className="card bg-base-100 shadow-xl p-4 md:p-10 grid grid-cols-1 gap-4 md:grid-cols-8 w-full">
                 <div className="col-span-3 mx-auto">
-                    <div>
+                    <div className="">
                         <div className="avatar">
-                            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 animate__animated animate__bounceInDown">
                                 <img src={user?.photoURL} />
                             </div>
                         </div>
-                        <h1 className="font-bold text-3xl mt-3">{user?.displayName}</h1>
+                        <h1 className="font-bold text-3xl mt-3 animate__animated animate__lightSpeedInLeft">{user?.displayName}</h1>
                         <div>
                             <Link to='/update-profile'>
                                 <button className="btn bg-[#00b5a5] text-white mt-2">Edit Profile</button>
@@ -50,10 +50,10 @@ const UserProfile = () => {
                 </div>
 
                 <div className="col-span-4 space-y-4">
-                    <h1><span className="font-bold">Name:</span> {user?.displayName}</h1>
-                    <h1><span className="font-bold">Email:</span> {user?.email}</h1>
-                    <h1><span className="font-bold">PhotoURL:</span> {user?.photoURL?.slice(0, 40)}...</h1>
-                    <h1><span className="font-bold">Verify Status:</span> {user?.emailVerified ? "Verified" : "Not Verified"}</h1>
+                    <h1><span className="font-bold">Name:</span> <span className="animate__animated animate__flipInX">{user?.displayName}</span></h1>
+                    <h1><span className="font-bold">Email:</span> <span className="animate__animated animate__flipInX">{user?.email}</span></h1>
+                    <h1><span className="font-bold">PhotoURL:</span> <span className="animate__animated animate__flipInX">{user?.photoURL?.slice(0, 40)}...</span></h1>
+                    <h1><span className="font-bold">Verify Status:</span> <span className="animate__animated animate__flipInX">{user?.emailVerified ? "Verified" : "Not Verified"}</span></h1>
                 </div>
             </div>
 
