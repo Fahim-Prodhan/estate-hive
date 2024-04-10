@@ -50,10 +50,10 @@ const UserProfile = () => {
                 </div>
 
                 <div className="col-span-4 space-y-4">
-                    <h1><span className="font-bold">Name:</span> <span className="animate__animated animate__flipInX">{user?.displayName}</span></h1>
-                    <h1><span className="font-bold">Email:</span> <span className="animate__animated animate__flipInX">{user?.email}</span></h1>
-                    <h1><span className="font-bold">PhotoURL:</span> <span className="animate__animated animate__flipInX">{user?.photoURL?.slice(0, 40)}...</span></h1>
-                    <h1><span className="font-bold">Verify Status:</span> <span className="animate__animated animate__flipInX">{user?.emailVerified ? "Verified" : "Not Verified"}</span></h1>
+                    <h1><span className="font-bold">Name:</span> <span className="animate__animated animate__flipInX animate__delay:1s">{user?.displayName}</span></h1>
+                    <h1><span className="font-bold">Email:</span> <span className="animate__animated animate__flipInX animate__delay:1s">{user?.email}</span></h1>
+                    <h1><span className="font-bold">PhotoURL:</span> <span className="animate__animated animate__flipInX animate__delay:1s">{user?.photoURL?.slice(0, 40)}...</span></h1>
+                    <h1><span className="font-bold">Verify Status:</span> <span className="animate__animated animate__flipInX animate__delay:1s">{user?.emailVerified ? "Verified" : "Not Verified"}</span></h1>
                 </div>
             </div>
 

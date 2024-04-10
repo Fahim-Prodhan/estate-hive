@@ -2,11 +2,14 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase/firebase.config";
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";
+import { FaRegEyeSlash } from "react-icons/fa";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+
 
 
 const Login = () => {
@@ -16,6 +19,12 @@ const Login = () => {
     const githubProvider = new GithubAuthProvider();
     const location = useLocation();
     const navigate = useNavigate()
+
+    const [eye,setEye] = useState(false)
+
+    const togglePassword = ()=>{
+        setEye(!eye)
+    }
 
 
     const handleGoogleSignIn = () => {
@@ -78,11 +87,11 @@ const Login = () => {
 
     return (
         <div>
-             <Helmet>
+            <Helmet>
                 <title>EstateHive | Login</title>
             </Helmet>
-            <div className="text-center my-7">
-                <h1 className="text-[40px]">Please Login</h1>
+            <div className="text-center py-2">
+                <h1 className="text-[40px] text-[#00b5a5]">Please Login</h1>
             </div>
             <div className="">
                 <div className="hero-content flex-col lg:flex-row-reverse">
@@ -98,7 +107,10 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input name="password" type="password" placeholder="password" className="input input-bordered" required />
+                                <label className="input input-bordered flex items-center gap-2 label">
+                                    <input name="password" type={eye?"text":"password"} className="grow" placeholder="Password" />
+                                    <span onClick={togglePassword} className="text-xl">{eye?<MdOutlineRemoveRedEye />:<FaRegEyeSlash />}</span>
+                                </label>
                                 <label className="label">
                                     <p className="pt-2 text-sm">Don't Have any account? <span className="text-blue-400"><Link to='/register'>Register</Link></span></p>
                                 </label>
@@ -109,7 +121,7 @@ const Login = () => {
                                 </div>
                             </div>
                             <div className="form-control mt-6">
-                                <button type="submit" className="btn btn-primary">Login</button>
+                                <button type="submit" className="btn bg-[#00b5a5] text-white">Login</button>
                             </div>
                         </form>
                     </div>

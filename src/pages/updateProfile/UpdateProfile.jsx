@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 const UpdateProfile = () => {
 
     const { user } = useContext(AuthContext)
+  
 
     const handleUpdateProfile = e => {
         e.preventDefault();

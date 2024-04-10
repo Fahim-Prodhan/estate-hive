@@ -1,17 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";
+import { FaRegEyeSlash } from "react-icons/fa";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
 
 
 const Register = () => {
 
     const { createUser } = useContext(AuthContext)
     const navigate = useNavigate()
+
+    const [eye,setEye] = useState(false)
+
+    const togglePassword = ()=>{
+        setEye(!eye)
+    }
 
     const handleRegister = e => {
         e.preventDefault();
@@ -48,11 +56,11 @@ const Register = () => {
 
     return (
         <div>
-             <Helmet>
+            <Helmet>
                 <title>EstateHive | Register</title>
             </Helmet>
-            <div className="text-center my-7">
-                <h1 className="text-[40px]">Register</h1>
+            <div className="text-center my-3">
+                <h1 className="text-[40px] text-[#00b5a5]">Register</h1>
             </div>
             <div className="">
                 <div className="hero-content flex-col lg:flex-row-reverse">
@@ -80,13 +88,16 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input name="password" type="password" placeholder="Enter password" className="input input-bordered" required />
+                                <label className="input input-bordered flex items-center gap-2 label">
+                                    <input name="password" type={eye ? "text" : "password"} className="grow" placeholder="Password" />
+                                    <span onClick={togglePassword} className="text-xl">{eye ? <MdOutlineRemoveRedEye /> : <FaRegEyeSlash />}</span>
+                                </label>
                                 <label className="label">
                                     <p className="pt-2 text-sm">Already have an account? <span className="text-blue-400"><Link to='/login'>Login</Link></span></p>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button type="submit" className="btn btn-primary">Create an account</button>
+                                <button type="submit" className="btn bg-[#00b5a5] text-white">Create an account</button>
                             </div>
                         </form>
                     </div>
