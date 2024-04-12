@@ -1,3 +1,9 @@
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/swiper-bundle.css'
 import banner from '../../../assets/images/banner1.jpg'
 import banner2 from '../../../assets/images/banner2.jpg'
 import banner3 from '../../../assets/images/banner3.jpg'
@@ -12,7 +18,7 @@ const Slider = () => {
         <p className='text-white text-[14px] md:text-[16px] lg:text-xl animate__animated animate__fadeInLeft'>We Have Over Million Properties For You</p>
         <h1 className='font-bold text-[24px] md:text-[28px] lg:text-[48px] text-white animate__animated  animate__backInLeft'>Find Your Dream Home</h1>
       </div>
-      <div className="carousel w-full">
+      {/* <div className="carousel w-full">
         <div id="slide1" className="carousel-item relative w-full ">
           <img
             src={banner}
@@ -55,7 +61,19 @@ const Slider = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Swiper
+       modules={[Navigation, Pagination, Scrollbar, A11y]}
+       spaceBetween={50}
+       slidesPerView={1}
+       navigation
+       pagination={{ clickable: true }}
+       scrollbar={{ draggable: true }}
+    >
+      <SwiperSlide><img className='rounded-lg' src={banner} alt="" /></SwiperSlide>
+      <SwiperSlide><img className='rounded-lg' src={banner2} alt="" /></SwiperSlide>
+      <SwiperSlide><img className='rounded-lg' src={banner3} alt="" /></SwiperSlide>
+    </Swiper>
       {/* Search */}
       <div className='my-4'>
         <div className='relative  md:absolute w-full md:w-3/4 top-[90px] md:top-[65%] left-[50%] lg:left-[50%] transform -translate-x-1/2 -translate-y-1/2 z-10'>
@@ -71,6 +89,12 @@ const Slider = () => {
           </div>
         </div>
       </div>
+
+
+
+
+
+
     </div>
   );
 };
