@@ -3,12 +3,14 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
 
 
 const UpdateProfile = () => {
 
     const { user } = useContext(AuthContext)
-  
+    const navigate = useNavigate()
+
 
     const handleUpdateProfile = e => {
         e.preventDefault();
@@ -21,7 +23,7 @@ const UpdateProfile = () => {
             .then(res => {
                 toast("Profile is Updated")
                 setTimeout(() => {
-                    window.location.reload();
+                    navigate('/user-profile')
                 }, 1500)
             })
             .catch(error => {
@@ -39,7 +41,7 @@ const UpdateProfile = () => {
             .then(res => {
                 toast("Profile is Updated")
                 setTimeout(() => {
-                    window.location.reload();
+                    navigate('/user-profile')
                 }, 1500)
             })
             .catch(error => {
@@ -49,12 +51,19 @@ const UpdateProfile = () => {
 
     return (
         <div className="md:w-1/2 mx-auto md:h-[60vh]">
-             <Helmet>
+            <Helmet>
                 <title>EstateHive | UpdateProfile</title>
             </Helmet>
             <div className="">
                 <div className="card shadow-md gap-4 p-10">
-                    <h1 className="font-semibold text-2xl">Edit Profile</h1>
+                    <div className="grid gap-4">
+                        <div className="avatar">
+                            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <img src={user.photoURL} />
+                            </div>
+                        </div>
+                        <h1 className="font-semibold text-2xl">Edit Profile</h1>
+                    </div>
                     <form onSubmit={handleUpdateProfile}>
                         <div className="relative">
                             <label className="input input-bordered flex items-center gap-2">

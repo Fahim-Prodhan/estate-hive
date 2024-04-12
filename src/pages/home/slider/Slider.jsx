@@ -18,50 +18,7 @@ const Slider = () => {
         <p className='text-white text-[14px] md:text-[16px] lg:text-xl animate__animated animate__fadeInLeft'>We Have Over Million Properties For You</p>
         <h1 className='font-bold text-[24px] md:text-[28px] lg:text-[48px] text-white animate__animated  animate__backInLeft'>Find Your Dream Home</h1>
       </div>
-      {/* <div className="carousel w-full">
-        <div id="slide1" className="carousel-item relative w-full ">
-          <img
-            src={banner}
-            className="w-full rounded-[20px] "
-          />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-[50%]">
-            <a href="#slide3" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide2" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-        <div id="slide2" className="carousel-item relative w-full ">
-          <img
-            src={banner2}
-            className="w-full rounded-[20px]"
-          />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-[50%]">
-            <a href="#slide1" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide3" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-        <div id="slide3" className="carousel-item relative w-full ">
-          <img
-            src={banner3}
-            className="w-full rounded-[20px]"
-          />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-[50%]">
-            <a href="#slide2" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide1" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-      </div> */}
+    
       <Swiper
        modules={[Navigation, Pagination, Scrollbar, A11y]}
        spaceBetween={50}
@@ -70,9 +27,9 @@ const Slider = () => {
        pagination={{ clickable: true }}
        scrollbar={{ draggable: true }}
     >
-      <SwiperSlide><img className='rounded-lg' src={banner} alt="" /></SwiperSlide>
-      <SwiperSlide><img className='rounded-lg' src={banner2} alt="" /></SwiperSlide>
-      <SwiperSlide><img className='rounded-lg' src={banner3} alt="" /></SwiperSlide>
+      <SwiperSlide><img className='rounded-xl' src={banner2} alt="" /></SwiperSlide>
+      <SwiperSlide><img className='rounded-xl' src={banner3} alt="" /></SwiperSlide>
+      <SwiperSlide><img className='rounded-xl' src={banner} alt="" /></SwiperSlide>
     </Swiper>
       {/* Search */}
       <div className='my-4'>
