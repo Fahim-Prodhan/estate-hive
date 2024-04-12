@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
+import { MdEmail } from "react-icons/md";
 
 
 const UpdateProfile = () => {
@@ -62,6 +63,7 @@ const UpdateProfile = () => {
                                 <img src={user.photoURL} />
                             </div>
                         </div>
+                        <p className="text-[#000000a0] flex items-center gap-2"><MdEmail /> {user?.email}</p>
                         <h1 className="font-semibold text-2xl">Edit Profile</h1>
                     </div>
                     <form onSubmit={handleUpdateProfile}>

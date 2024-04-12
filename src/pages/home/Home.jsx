@@ -9,9 +9,11 @@ const Home = () => {
             <Helmet>
                 <title>EstateHive | Home</title>
             </Helmet>
-           <Slider></Slider>
-           <Estates></Estates>
-           <Review></Review>
+            <Slider></Slider>
+            <Estates></Estates>
+            <div className="overflow-hidden">
+                <Review></Review>
+            </div>
 
         </div>
     );
