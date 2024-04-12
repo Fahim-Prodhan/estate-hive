@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
 import { Helmet } from "react-helmet";
 
 
@@ -12,7 +10,7 @@ const Details = () => {
     const intId = parseInt(id)
 
     const estate = estates.find(estate => estate.id === intId)
-    console.log(estate);
+    // console.log(estate);
 
 
     return (
@@ -24,7 +22,7 @@ const Details = () => {
                 <img className="w-[560px] rounded-lg" src={estate.image} alt="" />
             </div>
             <div>
-                <h1 className="font-bold text-5xl">{estate.estate_title}</h1>
+                <h1 className="font-bold text-2xl md:text-5xl">{estate.estate_title}</h1>
                 <p className="text-xl text-[#00b5a5]">#{estate.segment_name}</p>
                 <div className="my-6"><hr /></div>
                 <div className="flex gap-2">

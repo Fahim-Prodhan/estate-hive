@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
@@ -48,7 +48,7 @@ const UpdateProfile = () => {
     }
 
     return (
-        <div className="w-1/2 mx-auto h-[60vh]">
+        <div className="md:w-1/2 mx-auto md:h-[60vh]">
              <Helmet>
                 <title>EstateHive | UpdateProfile</title>
             </Helmet>
@@ -66,7 +66,7 @@ const UpdateProfile = () => {
                     <form onSubmit={handleUpdateProfilePic}>
                         <div className="relative">
                             <label className="input input-bordered flex items-center gap-2">
-                                <input name="photoUrl" type="text" className="grow" placeholder='photoURL' />
+                                <input name="photoUrl" type="text" className="grow" placeholder={user.photoURL} />
                             </label>
                             <button className="badge text-white badge-info btn absolute right-0 top-0">Save</button>
                         </div>

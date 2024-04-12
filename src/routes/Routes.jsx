@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 import UserProfile from "../pages/userProfile/UserProfile";
 import ErrorElement from "../pages/errorElement/ErrorElement";
+import Wishlist from "../pages/wishList/Wishlist";
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
         },
         {
           path:"/user-profile",
-          element:<UserProfile></UserProfile>
+          element:<PrivateRoute><UserProfile></UserProfile></PrivateRoute>
         },
         {
           path:'/details/:id',
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
         {
           path:'update-profile',
           element:<PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+        },
+        {
+          path:'wishlist',
+          element:<PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
+          loader:()=>fetch('../estate.json')
         }
       ]
     },

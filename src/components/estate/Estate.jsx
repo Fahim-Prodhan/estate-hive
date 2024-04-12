@@ -1,24 +1,51 @@
 
 import PropTypes from 'prop-types';
 import { CiLocationOn } from "react-icons/ci";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css'
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { FaHeartCirclePlus } from "react-icons/fa6";
+import { addEstateToLS, getStoredEstate } from '../../utils/localStorage';
+import { AuthContext } from '../../provider/AuthProvider';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+
 
 Estate.propTypes = {
     estate: PropTypes.object
 };
 
-function Estate({ estate }) {   
-    useEffect(()=>{
+function Estate({ estate }) {
+
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    useEffect(() => {
         Aos.init()
-    },[])
+    }, [])
+
+    const handleWishList = (id) => {
+        const getExistingEstate = getStoredEstate()
+        if (!user) {
+            navigate('/login')
+        }else if (getExistingEstate.includes(id)) {
+            Swal.fire('Oops...', 'Already Exist in Wishlist', 'error')
+            // alert("Already Exist!")
+            console.log('ache');
+
+        } else {
+            addEstateToLS(id)
+            Swal.fire('Success', 'Added to Wishlist', 'success')
+        }
+    }
+
+
 
     const { id, image, status, price, estate_title, location, segment_name, area } = estate
     // console.log(estate);
     return (
-        <div  data-aos="fade-up">
+        <div data-aos="fade-up">
             <div className="card bg-[#fffaf265] shadow-xl">
                 <div className='relative'>
                     <figure className="">
@@ -44,11 +71,13 @@ function Estate({ estate }) {
                     <div className='my-4'>
                         <hr />
                     </div>
-                    <div className="card-actions ">
+                    <div className="card-actions justify-between">
                         <Link to={`details/${id}`}> <button className="btn bg-[#E8751A] text-white">View Property</button></Link>
+                        <button onClick={() => handleWishList(id)} className="btn bg-[#41C9E2] text-white">Add wish <span className='text-xl'><FaHeartCirclePlus /></span></button>
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }

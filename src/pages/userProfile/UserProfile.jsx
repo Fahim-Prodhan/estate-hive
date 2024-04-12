@@ -22,7 +22,7 @@ const UserProfile = () => {
     }
    
     return (
-        <div className="my-12 h-[50vh]">
+        <div className="my-12 md:h-[50vh]">
              <Helmet>
                 <title>EstateHive | User Profile</title>
             </Helmet>
