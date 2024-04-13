@@ -91,13 +91,13 @@ const UpdateProfile = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input name="name" value={name} onChange={handleNameOnChange} type="text" placeholder="email" className="input input-bordered" required />
+                            <input name="name" value={name} onChange={handleNameOnChange} type="text" placeholder="Enter Name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">PhotoURL</span>
                             </label>
-                            <input name="photoUrl" value={photoURL} onChange={handlePhotoURLOnChange} type="text" placeholder="password" className="input input-bordered" required />
+                            <input name="photoUrl" value={photoURL} onChange={handlePhotoURLOnChange} type="text" placeholder="Enter PhotoURL" className="input input-bordered" required />
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn bg-[#008DDA] text-white">Save</button>
