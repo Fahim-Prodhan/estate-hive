@@ -30,11 +30,11 @@ const UserProfile = () => {
                 <div className="col-span-3 mx-auto">
                     <div className="">
                         <div className="avatar">
-                            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 animate__animated animate__bounceInDown">
+                            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 animate__animated animate__fadeIn">
                                 <img src={user?.photoURL} />
                             </div>
                         </div>
-                        <h1 className="font-bold text-3xl mt-3 animate__animated animate__lightSpeedInLeft">{user?.displayName}</h1>
+                        <h1 className="font-bold text-3xl mt-3 animate__animated animate__fadeIn">{user?.displayName}</h1>
                         <div>
                             <Link to='/update-profile'>
                                 <button className="btn bg-[#00b5a5] text-white mt-2">Edit Profile</button>

@@ -6,6 +6,8 @@ import auth from "../../firebase/firebase.config";
 // import { toast } from "react-toastify";
 import 'react-notifications-component/dist/theme.css'
 import toast from "react-hot-toast";
+import { IoIosLogOut } from "react-icons/io";
+import { IoIosLogIn } from "react-icons/io";
 
 
 const Navbar = () => {
@@ -89,8 +91,8 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             </div>
-                            <a className="btn btn-error text-white p-1 md:p-4" onClick={handleLogout}>Logout</a>
-                        </div> : <NavLink className="btn text-white bg-[#00b5a5]" to='/login'>Login</NavLink>
+                            <Link to='/login' className="btn btn-error text-white p-1 md:p-2" onClick={handleLogout}>Logout <span className="text-[16px]"><IoIosLogOut/></span> </Link>
+                        </div> : <NavLink className="btn text-white bg-[#00b5a5] p-1 md:p-2" to='/login'>Login <span className="text-[16px]"><IoIosLogIn/></span></NavLink>
                     }
                 </div>
             </div>

@@ -8,7 +8,8 @@ import { Helmet } from "react-helmet";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import toast from "react-hot-toast";
-
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 
 const Login = () => {
@@ -30,25 +31,25 @@ const Login = () => {
         signInWithPopup(auth, googleProvider)
             .then(() => {
                 // console.log(res.user);
-                toast.success("Login Successful",{
+                toast.success("Login Successful", {
                     position: "top-right",
-                    duration:5000,
-                    style:{width:'200px', height:'70px'},
+                    duration: 5000,
+                    style: { width: '200px', height: '70px' },
                 });
-                if(location.state == '/update-profile'){
+                if (location.state == '/update-profile') {
                     navigate('/')
-                }else{
+                } else {
                     navigate(location.state ? `${location.state}` : '/')
                 }
 
-                console.log(location.state);
+                // console.log(location.state);
 
             })
             .catch(error => {
-                toast.error("Something is went wrong",{
+                toast.error("Something is went wrong", {
                     position: "top-right",
-                    duration:5000,
-                    style:{width:'200px', height:'70px'},
+                    duration: 5000,
+                    style: { width: '200px', height: '70px' },
                 });
                 console.log(error);
             })
@@ -58,22 +59,22 @@ const Login = () => {
         signInWithPopup(auth, githubProvider)
             .then(() => {
                 // console.log(res.user);
-                toast.success("Login Successful",{
+                toast.success("Login Successful", {
                     position: "top-right",
-                    duration:5000,
-                    style:{width:'250px', height:'70px'},
+                    duration: 5000,
+                    style: { width: '250px', height: '70px' },
                 });
-                if(location.state== '/update-profile'){
+                if (location.state == '/update-profile') {
                     navigate('/')
-                }else{
+                } else {
                     navigate(location.state ? `${location.state}` : '/')
                 }
             })
             .catch(error => {
-                toast.error("Something is went wrong",{
+                toast.error("Something is went wrong", {
                     position: "top-right",
-                    duration:5000,
-                    style:{width:'250px', height:'70px'},
+                    duration: 5000,
+                    style: { width: '250px', height: '70px' },
                 });
 
                 console.log(error);
@@ -90,22 +91,22 @@ const Login = () => {
         signInUser(email, password)
             .then(() => {
                 // console.log(res.user);
-                toast.success("Login Successful",{
+                toast.success("Login Successful", {
                     position: "top-right",
-                    duration:5000,
-                    style:{width:'250px', height:'70px'},
+                    duration: 5000,
+                    style: { width: '250px', height: '70px' },
                 });
-                    if(location.state== '/update-profile'){
-                        navigate('/')
-                    }else{
-                        navigate(location.state ? `${location.state}` : '/')
-                    }
+                if (location.state == '/update-profile') {
+                    navigate('/')
+                } else {
+                    navigate(location.state ? `${location.state}` : '/')
+                }
             })
             .catch(error => {
-                toast.error("Something is went wrong",{
+                toast.error("Something is went wrong", {
                     position: "top-right",
-                    duration:5000,
-                    style:{width:'250px', height:'70px'},
+                    duration: 5000,
+                    style: { width: '250px', height: '70px' },
                 });
                 console.log(error);
             })
@@ -136,20 +137,21 @@ const Login = () => {
                                 </label>
                                 <label className="input input-bordered flex items-center gap-2 label">
                                     <input name="password" type={eye ? "text" : "password"} className="grow" placeholder="Password" />
-                                    <span onClick={togglePassword} className="text-xl -ml-5 md:-ml-0">{eye ? <MdOutlineRemoveRedEye /> : <FaRegEyeSlash />}</span>
+                                    <span onClick={togglePassword} className="text-xl -ml-10 md:-ml-0">{eye ? <MdOutlineRemoveRedEye /> : <FaRegEyeSlash />}</span>
                                 </label>
                                 <label className="label">
                                     <p className="pt-2 text-sm">Don't Have any account? <span className="text-blue-400"><Link to='/register'>Register</Link></span></p>
                                 </label>
-                                <div className="divider">OR</div>
-                                <div className="flex justify-center gap-4">
-                                    <button onClick={handleGoogleSignIn} className="btn">Google</button>
-                                    <button onClick={handleGithubSignIn} className="btn">GitHub</button>
+                                <div className="form-control mt-6">
+                                    <button type="submit" className="btn bg-[#00b5a5] text-white">Login</button>
+                                </div>
+                                <div className="divider"> sign in with</div>
+                                <div className="flex justify-center gap-6">
+                                    <button type="button" onClick={handleGoogleSignIn} className="text-4xl"><FcGoogle /></button>
+                                    <button type="button" onClick={handleGithubSignIn} className="text-4xl"><FaGithub /></button>
                                 </div>
                             </div>
-                            <div className="form-control mt-6">
-                                <button type="submit" className="btn bg-[#00b5a5] text-white">Login</button>
-                            </div>
+
                         </form>
                     </div>
                 </div>

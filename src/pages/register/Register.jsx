@@ -101,7 +101,7 @@ const Register = () => {
                                 </label>
                                 <label className="input input-bordered flex items-center gap-2 label">
                                     <input name="password" type={eye ? "text" : "password"} className="grow" placeholder="Password" />
-                                    <span onClick={togglePassword} className="text-xl">{eye ? <MdOutlineRemoveRedEye /> : <FaRegEyeSlash />}</span>
+                                    <span onClick={togglePassword} className="text-xl -ml-10 md:-ml-0">{eye ? <MdOutlineRemoveRedEye /> : <FaRegEyeSlash />}</span>
                                 </label>
                                 <label className="label">
                                     <p className="pt-2 text-sm">Already have an account? <span className="text-blue-400"><Link to='/login'>Login</Link></span></p>
