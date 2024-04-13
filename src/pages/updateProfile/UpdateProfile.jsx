@@ -1,57 +1,72 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { ToastContainer, toast } from "react-toastify";
+import { Flip, ToastContainer, toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-import { MdEmail } from "react-icons/md";
 
 
 const UpdateProfile = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, setReload } = useContext(AuthContext)
     const navigate = useNavigate()
+    const [name, setName] = useState(user.displayName)
+    const [photoURL, setPhotoURL] = useState(user.photoURL)
+
+    const handleNameOnChange = (e) => {
+        setName(e.target.value)
+    }
+
+    const handlePhotoURLOnChange = (e) => {
+        setPhotoURL(e.target.value)
+    }
 
 
     const handleUpdateProfile = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget)
         const name = form.get('name');
-
-        updateProfile(user, {
-            displayName: name
-        })
-            .then(res => {
-                toast("Profile is Updated")
-                setTimeout(() => {
-                    navigate('/user-profile')
-                }, 1500)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
-    const handleUpdateProfilePic = e => {
-        e.preventDefault();
-        const form = new FormData(e.currentTarget)
         const photoUrl = form.get('photoUrl');
 
+
         updateProfile(user, {
-            photoURL: photoUrl
+            displayName: name, photoURL: photoUrl
         })
-            .then(res => {
-                toast("Profile is Updated")
+            .then(() => {
+                toast.success('Profile update is successful', {
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Flip,
+                });
                 setTimeout(() => {
+                    setReload(true)
                     navigate('/user-profile')
-                }, 1500)
+                }, 1700);
             })
             .catch(error => {
+                toast.error('Something is went wrong!', {
+                    position: "top-right",
+                    autoClose: 1200,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 console.log(error)
             })
     }
 
+
     return (
-        <div className="md:w-1/2 mx-auto md:h-[60vh]">
+        <div className="md:w-1/2 mx-auto my-6">
             <Helmet>
                 <title>EstateHive | UpdateProfile</title>
             </Helmet>
@@ -60,28 +75,35 @@ const UpdateProfile = () => {
                     <div className="grid gap-4">
                         <div className="avatar">
                             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src={user.photoURL} />
+                                <img src={user?.photoURL} />
                             </div>
                         </div>
-                        <p className="text-[#000000a0] flex items-center gap-2"><MdEmail /> {user?.email}</p>
                         <h1 className="font-semibold text-2xl">Edit Profile</h1>
                     </div>
                     <form onSubmit={handleUpdateProfile}>
-                        <div className="relative">
-                            <label className="input input-bordered flex items-center gap-2">
-                                <input name="name" type="text" className="grow" placeholder={user.displayName} />
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Email</span>
                             </label>
-                            <button className="badge text-white badge-info btn absolute right-0 top-0">Save</button>
+                            <input name="email"  value={user?.email} type="text" placeholder="email" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input name="name" value={name} onChange={handleNameOnChange} type="text" placeholder="email" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">PhotoURL</span>
+                            </label>
+                            <input name="photoUrl" value={photoURL} onChange={handlePhotoURLOnChange} type="text" placeholder="password" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control mt-6">
+                            <button className="btn bg-[#008DDA] text-white">Save</button>
                         </div>
                     </form>
-                    <form onSubmit={handleUpdateProfilePic}>
-                        <div className="relative">
-                            <label className="input input-bordered flex items-center gap-2">
-                                <input name="photoUrl" type="text" className="grow" placeholder={user.photoURL} />
-                            </label>
-                            <button className="badge text-white badge-info btn absolute right-0 top-0">Save</button>
-                        </div>
-                    </form>
+
 
                 </div>
                 <ToastContainer />

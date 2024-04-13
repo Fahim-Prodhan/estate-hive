@@ -2,7 +2,8 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../firebase/firebase.config";
-import {  toast } from "react-toastify";
+import toast from "react-hot-toast";
+
 
 
 export const AuthContext = createContext(null);
@@ -11,6 +12,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true)
+    const [reload, setReload] = useState(false)
 
 
     const createUser = (email, password) => {
@@ -72,7 +74,7 @@ const AuthProvider = ({ children }) => {
             unsubscribe()
         }
 
-    },[])
+    },[reload])
 
 
     const authInfo = {
@@ -81,7 +83,8 @@ const AuthProvider = ({ children }) => {
         createUser,
         signInUser,
         loading,
-        setLoading
+        setLoading,
+        setReload
     }
 
     return (

@@ -3,16 +3,15 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import toast from "react-hot-toast";
 
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext)
+    const { createUser,setReload } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const [eye,setEye] = useState(false)
@@ -35,18 +34,30 @@ const Register = () => {
                 updateProfile(res.user, {
                     displayName: name, photoURL: photoUrl
                 })
-                    .then()
+                    .then(()=>{
+                        setReload(true)
+                    })
                     .catch(error => {
                         console.log(error)
                     })
-                toast("Registration Successful")
+                    toast.success("Registration Successful",{
+                        position: "top-right",
+                        duration:5000,
+                        style:{width:'250px', height:'70px'},
+                    });
                 setTimeout(() => {
                     navigate('/')
-                }, 2000);
+                }, 1600);
                 // console.log(res.user);
             })
             .catch(error => {
+                toast.error("Something is went wrong!",{
+                    position: "top-right",
+                    duration:5000,
+                    style:{width:'250px', height:'70px'},
+                });
                 console.log(error);
+
             })
 
         // console.log(name,email,photoUrl,password);
@@ -102,7 +113,6 @@ const Register = () => {
                         </form>
                     </div>
                 </div>
-                <ToastContainer />
             </div>
         </div>
     );

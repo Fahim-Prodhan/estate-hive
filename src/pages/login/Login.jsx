@@ -4,52 +4,78 @@ import auth from "../../firebase/firebase.config";
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import toast from "react-hot-toast";
 
 
 
 const Login = () => {
 
-    const { signInUser, setLoading } = useContext(AuthContext)
+    const { signInUser } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const location = useLocation();
     const navigate = useNavigate()
 
-    const [eye,setEye] = useState(false)
+    const [eye, setEye] = useState(false)
 
-    const togglePassword = ()=>{
+    const togglePassword = () => {
         setEye(!eye)
     }
 
 
     const handleGoogleSignIn = () => {
-        setLoading(true)
         signInWithPopup(auth, googleProvider)
-            .then(res => {
+            .then(() => {
                 // console.log(res.user);
-                navigate(location.state ? `${location.state}` : '/')
-                toast("Login Successful")
+                toast.success("Login Successful",{
+                    position: "top-right",
+                    duration:5000,
+                    style:{width:'200px', height:'70px'},
+                });
+                if(location.state == '/update-profile'){
+                    navigate('/')
+                }else{
+                    navigate(location.state ? `${location.state}` : '/')
+                }
+
+                console.log(location.state);
+
             })
             .catch(error => {
+                toast.error("Something is went wrong",{
+                    position: "top-right",
+                    duration:5000,
+                    style:{width:'200px', height:'70px'},
+                });
                 console.log(error);
             })
     }
 
     const handleGithubSignIn = () => {
-        setLoading(true)
         signInWithPopup(auth, githubProvider)
-            .then(res => {
+            .then(() => {
                 // console.log(res.user);
-                navigate('/')
-                toast("Login Successful")
-
+                toast.success("Login Successful",{
+                    position: "top-right",
+                    duration:5000,
+                    style:{width:'250px', height:'70px'},
+                });
+                if(location.state== '/update-profile'){
+                    navigate('/')
+                }else{
+                    navigate(location.state ? `${location.state}` : '/')
+                }
             })
             .catch(error => {
+                toast.error("Something is went wrong",{
+                    position: "top-right",
+                    duration:5000,
+                    style:{width:'250px', height:'70px'},
+                });
+
                 console.log(error);
             })
     }
@@ -62,23 +88,24 @@ const Login = () => {
         const password = form.get('password');
 
         signInUser(email, password)
-            .then(res => {
+            .then(() => {
                 // console.log(res.user);
-                toast("Login Successful")
-                setTimeout(() => {
-                    navigate(location.state ? `${location.state}` : '/')
-                }, 2000);
+                toast.success("Login Successful",{
+                    position: "top-right",
+                    duration:5000,
+                    style:{width:'250px', height:'70px'},
+                });
+                    if(location.state== '/update-profile'){
+                        navigate('/')
+                    }else{
+                        navigate(location.state ? `${location.state}` : '/')
+                    }
             })
             .catch(error => {
-                toast.error('Invalid Details', {
+                toast.error("Something is went wrong",{
                     position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
+                    duration:5000,
+                    style:{width:'250px', height:'70px'},
                 });
                 console.log(error);
             })
@@ -108,8 +135,8 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <label className="input input-bordered flex items-center gap-2 label">
-                                    <input name="password" type={eye?"text":"password"} className="grow" placeholder="Password" />
-                                    <span onClick={togglePassword} className="text-xl">{eye?<MdOutlineRemoveRedEye />:<FaRegEyeSlash />}</span>
+                                    <input name="password" type={eye ? "text" : "password"} className="grow" placeholder="Password" />
+                                    <span onClick={togglePassword} className="text-xl -ml-5 md:-ml-0">{eye ? <MdOutlineRemoveRedEye /> : <FaRegEyeSlash />}</span>
                                 </label>
                                 <label className="label">
                                     <p className="pt-2 text-sm">Don't Have any account? <span className="text-blue-400"><Link to='/register'>Register</Link></span></p>

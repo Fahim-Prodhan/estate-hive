@@ -3,29 +3,53 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
+import 'react-notifications-component/dist/theme.css'
+import toast from "react-hot-toast";
+
 
 const Navbar = () => {
 
-    const { user, setLoading } = useContext(AuthContext)
+    const { user, setLoading } = useContext(AuthContext);
 
     const handleLogout = () => {
         setLoading(true)
         signOut(auth).then(() => {
-            toast("Logout Successful")
+            toast.success("Logout Successful",{
+                position: "top-right",
+                duration:2000,
+                style:{width:'200px', height:'70px'},
+                
+            })
+           
         }).catch((error) => {
             console.log(error);
+            toast.error("Logout Successful",{
+                position: "top-right",
+                duration:2000,
+                style:{width:'200px', height:'70px'},
+            });
         });
     }
 
+
     const links = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='wishlist'>Wishlist</NavLink></li>
-        <li><NavLink to='update-profile'>Update Profile</NavLink></li>
+        <li><NavLink to='/'  style={({ isActive }) => ({
+            color: isActive ? '#ffff' : '#282828ea',
+            background: isActive ? '#41C9E2' : '#ffff',
+        })}>Home</NavLink></li>
+        <li><NavLink to='wishlist' style={({ isActive }) => ({
+            color: isActive ? '#ffff' : '#282828ea',
+            background: isActive ? '#41C9E2' : '#ffff',
+        })}>Wishlist</NavLink></li>
+        <li><NavLink to='update-profile' style={({ isActive }) => ({
+            color: isActive ? '#ffff' : '#282828ea',
+            background: isActive ? '#41C9E2' : '#ffff',
+        })}>Update Profile</NavLink></li>
     </>
 
     return (
-        <div>
+        <div >
             <div className="navbar bg-base-100 p-0">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -35,7 +59,10 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52">
                             {links}
                             {
-                                user && <li><NavLink to='/user-profile'>User Profile</NavLink></li>
+                                user && <li><NavLink to='/user-profile' style={({ isActive }) => ({
+                                    color: isActive ? '#ffff' : '#282828ea',
+                                    background: isActive ? '#41C9E2' : '#ffff',
+                                })}>User Profile</NavLink></li>
                             }
                         </ul>
                     </div>
@@ -45,7 +72,10 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1">
                         {links}
                         {
-                            user && <li><NavLink to='/user-profile'>User Profile</NavLink></li>
+                            user && <li><NavLink to='/user-profile' style={({ isActive }) => ({
+                                color: isActive ? '#ffff' : '#282828ea',
+                                background: isActive ? '#41C9E2' : '#ffff',
+                            })}>User Profile</NavLink></li>
                         }
                     </ul>
                 </div>
@@ -59,8 +89,8 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             </div>
-                            <a className="btn bg-[#00b5a5] text-white p-1 md:p-4" onClick={handleLogout}>Logout</a>
-                        </div> : <NavLink className="btn text-white bg-[#41C9E2]" to='/login'>Login</NavLink>
+                            <a className="btn btn-error text-white p-1 md:p-4" onClick={handleLogout}>Logout</a>
+                        </div> : <NavLink className="btn text-white bg-[#00b5a5]" to='/login'>Login</NavLink>
                     }
                 </div>
             </div>
